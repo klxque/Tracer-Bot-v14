@@ -14,8 +14,12 @@ module.exports = {
         if (guild.id !== config.serveurTracer) return;
 
         const voiceUpdateChannelId = await db.get(`tracer_${guildTarget.id}_voice`);
+        const cameraUpdateChannelId = await db.get(`tracer_${guildTarget.id}_camera`);
+        const streamUpdateChannelId = await db.get(`tracer_${guildTarget.id}_stream`);
 
-        const voiceUpdateChannel = await guildTarget.channels.cache.get(voiceUpdateChannelId)
+        const voiceUpdateChannel = await guildTarget.channels.cache.get(voiceUpdateChannelId);
+        const cameraUpdateChannel = await guildTarget.channels.cache.get(cameraUpdateChannelId);
+        const streamUpdateChannel = await guildTarget.channels.cache.get(streamUpdateChannelId);
 
         if (!voiceUpdateChannel) {
             return;
@@ -29,6 +33,7 @@ module.exports = {
                     { name: "Salon :", value: `${channel}`, inline: true }
                 )
                 .setColor('Green')
+                .setTimestamp()
 
             await voiceUpdateChannel.send({ embeds: [embed ]})
         }
@@ -41,6 +46,7 @@ module.exports = {
                     { name: "Salon :", value: `${channel}` }
                 )
                 .setColor('Red')
+                .setTimestamp()
             
             await voiceUpdateChannel.send({ embeds: [embed2] })
         }
@@ -54,6 +60,7 @@ module.exports = {
                     { name: "Nouveau Salon :", value: `${newState.channel}`, inline: true }
                 )
                 .setColor('Orange')
+                .setTimestamp()
 
             await voiceUpdateChannel.send({ embeds: [embed3] })
         }
@@ -66,25 +73,27 @@ module.exports = {
                     .setTitle("🎬・Stream Activé")
                     .addFields(
                         { name: "Membre :", value: `${user}`, inline: true },
-                        { name: "Salon :", value: `${channel}`, inline: true },
-                        { name: "Serveur :", value: guild.name, inline: false }
+                        { name: "Salon :", value: `${channel}`, inline: true }
                     )
                     .setColor('Green')
-                    .setTimestamp();
+                    .setTimestamp()
 
-                await voiceUpdateChannel.send({ embeds: [embed4] });
+                if (streamUpdateChannel) {
+                    await streamUpdateChannel.send({ embeds: [embed4] });
+                }
             } else {
                 const embed5 = new EmbedBuilder()
                     .setTitle("🎬・Stream Désactivé")
                     .addFields(
                         { name: "Membre :", value: `${user}`, inline: true },
-                        { name: "Salon :", value: `${channel}`, inline: true },
-                        { name: "Serveur :", value: guild.name, inline: false }
+                        { name: "Salon :", value: `${channel}`, inline: true }
                     )
                     .setColor('Red')
-                    .setTimestamp();
+                    .setTimestamp()
 
-                await voiceUpdateChannel.send({ embeds: [embed5] });
+                if (streamUpdateChannel) {
+                    await streamUpdateChannel.send({ embeds: [embed5] });
+                }
             }
         }
 
@@ -96,25 +105,27 @@ module.exports = {
                     .setTitle("🎥・Caméra Activée")
                     .addFields(
                         { name: "Membre :", value: `${user}`, inline: true },
-                        { name: "Salon :", value: `${channel}`, inline: true },
-                        { name: "Serveur :", value: guild.name, inline: false }
+                        { name: "Salon :", value: `${channel}`, inline: true }
                     )
                     .setColor('Green')
-                    .setTimestamp();
+                    .setTimestamp()
 
-                await voiceUpdateChannel.send({ embeds: [embed6] });
+                if (cameraUpdateChannel) {
+                    await cameraUpdateChannel.send({ embeds: [embed6] });
+                }
             } else {
                 const embed7 = new EmbedBuilder()
                     .setTitle("🎥・Caméra Désactivée")
                     .addFields(
                         { name: "Membre :", value: `${user}`, inline: true },
-                        { name: "Salon :", value: `${channel}`, inline: true },
-                        { name: "Serveur :", value: guild.name, inline: false }
+                        { name: "Salon :", value: `${channel}`, inline: true }
                     )
                     .setColor('Red')
-                    .setTimestamp();
+                    .setTimestamp()
 
-                await voiceUpdateChannel.send({ embeds: [embed7] });
+                if (cameraUpdateChannel) {
+                    await cameraUpdateChannel.send({ embeds: [embed7] });
+                }
             }
         }
     }

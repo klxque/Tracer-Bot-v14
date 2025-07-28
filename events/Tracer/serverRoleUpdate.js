@@ -65,8 +65,7 @@ async function handleRoleAdd(guild, member, addedRoles) {
             .addFields(
                 { name: "Membre :", value: `<@${member.id}>`, inline: true },
                 { name: "Rôle ajouté :", value: `\`${role.name}\` \`(${role.id})\``, inline: true },
-                { name: "Ajouté par :", value: executor ? `<@${executor.id}>` : "*Inconnu*", inline: true },
-                { name: "Serveur :", value: guild.name, inline: false }
+                { name: "Ajouté par :", value: executor ? `<@${executor.id}>` : "*Inconnu*", inline: true }
             )
             .setColor("Green")
             .setTimestamp();
@@ -113,8 +112,7 @@ async function handleRoleRemove(guild, member, removedRoles) {
             .addFields(
                 { name: "Membre :", value: `<@${member.id}>`, inline: true },
                 { name: "Rôle supprimé :", value: `\`${role.name}\` \`(${role.id})\``, inline: true },
-                { name: "Supprimé par :", value: executor ? `<@${executor.id}>` : "*Inconnu*", inline: true },
-                { name: "Serveur :", value: guild.name, inline: false }
+                { name: "Supprimé par :", value: executor ? `<@${executor.id}>` : "*Inconnu*", inline: true }
             )
             .setColor("Red")
             .setTimestamp();
