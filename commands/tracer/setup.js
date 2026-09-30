@@ -5,7 +5,7 @@ const db = new QuickDB();
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("setup")
-        .setDescription("Configure le système de traçage des rôles")
+        .setDescription("Setup les logs.")
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 
     async execute(interaction) {
@@ -179,14 +179,14 @@ module.exports = {
             await db.set(`tracer_${guild.id}_messageDelete`, messageDelete.id);
 
             await interaction.editReply({
-                content: "✅ Les salons de trace ont été créés en privé et enregistrés.",
+                content: "Salon de logs créer.",
                 ephemeral: true
             });
 
         } catch (error) {
             console.error('Erreur lors de la configuration:', error);
             await interaction.editReply({
-                content: "❌ Une erreur est survenue lors de la configuration.",
+                content: "Erreur pendant la création des salons.",
                 ephemeral: true
             });
         }

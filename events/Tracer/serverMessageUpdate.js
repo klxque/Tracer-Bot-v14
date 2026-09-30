@@ -28,7 +28,7 @@ module.exports = {
         }
 
         const embed = new EmbedBuilder()
-            .setTitle("✏️・Message Modifé")
+            .setTitle("Message Modifé")
             .setThumbnail(user.displayAvatarURL())
             .addFields(
                 { name: "Ancien message :", value: oldMessage.content || '*Aucun*', inline: true },

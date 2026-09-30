@@ -28,7 +28,7 @@ module.exports = {
         }
 
         const embed = new EmbedBuilder()
-            .setTitle("🗑️・Message Suprimmé")
+            .setTitle("Message Suprimmé")
             .setThumbnail(user.displayAvatarURL())
             .setColor('Red')
             .addFields(

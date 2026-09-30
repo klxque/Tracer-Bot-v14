@@ -61,11 +61,11 @@ async function handleRoleAdd(guild, member, addedRoles) {
         const executor = roleUpdateLog?.executor;
 
         const embed = new EmbedBuilder()
-            .setTitle("➕・Rôle ajouté")
+            .setTitle("Rôle ajouté")
             .addFields(
                 { name: "Membre :", value: `<@${member.id}>`, inline: true },
-                { name: "Rôle ajouté :", value: `\`${role.name}\` \`(${role.id})\``, inline: true },
-                { name: "Ajouté par :", value: executor ? `<@${executor.id}>` : "*Inconnu*", inline: true }
+                { name: "Rôle :", value: `\`${role.name}\` \`(${role.id})\``, inline: true },
+                { name: "Modérateur :", value: executor ? `<@${executor.id}>` : "*Inconnu*", inline: true }
             )
             .setColor("Green")
             .setTimestamp();
@@ -108,11 +108,11 @@ async function handleRoleRemove(guild, member, removedRoles) {
         const executor = roleUpdateLog?.executor;
 
         const embed = new EmbedBuilder()
-            .setTitle("➖・Rôle supprimé")
+            .setTitle("Rôle enlevé")
             .addFields(
                 { name: "Membre :", value: `<@${member.id}>`, inline: true },
-                { name: "Rôle supprimé :", value: `\`${role.name}\` \`(${role.id})\``, inline: true },
-                { name: "Supprimé par :", value: executor ? `<@${executor.id}>` : "*Inconnu*", inline: true }
+                { name: "Rôle :", value: `\`${role.name}\` \`(${role.id})\``, inline: true },
+                { name: "Modérateur :", value: executor ? `<@${executor.id}>` : "*Inconnu*", inline: true }
             )
             .setColor("Red")
             .setTimestamp();

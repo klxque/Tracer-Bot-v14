@@ -27,7 +27,7 @@ module.exports = {
 
         if (!oldState.channel && newState.channel) {
             const embed = new EmbedBuilder()
-                .setTitle("➕・Vocal Rejoint")
+                .setTitle("Join")
                 .addFields(
                     { name: "Membre :", value: `${user}`, inline: true },
                     { name: "Salon :", value: `${channel}`, inline: true }
@@ -40,7 +40,7 @@ module.exports = {
 
         if (oldState.channel && !newState.channel) {
             const embed2 = new EmbedBuilder()
-                .setTitle("➖・Vocal Quitté")
+                .setTitle("Leave")
                 .addFields(
                     { name: "Membre", value: `${user}`, inline: true },
                     { name: "Salon :", value: `${channel}` }
@@ -53,7 +53,7 @@ module.exports = {
 
         if (oldState.channel && newState.channel && oldState.channel.id !== newState.channel.id) {
             const embed3 = new EmbedBuilder()
-                .setTitle('🔁・Changement de Salons')
+                .setTitle('Moove')
                 .addFields(
                     { name: "Membre :", value: `${user}`, inline: true },
                     { name: "Ancien Salon :", value: `${oldState.channel}`, inline: true },
@@ -70,7 +70,7 @@ module.exports = {
             
             if (newState.streaming) {
                 const embed4 = new EmbedBuilder()
-                    .setTitle("🎬・Stream Activé")
+                    .setTitle("Stream commencer")
                     .addFields(
                         { name: "Membre :", value: `${user}`, inline: true },
                         { name: "Salon :", value: `${channel}`, inline: true }
@@ -83,7 +83,7 @@ module.exports = {
                 }
             } else {
                 const embed5 = new EmbedBuilder()
-                    .setTitle("🎬・Stream Désactivé")
+                    .setTitle("Stream fini")
                     .addFields(
                         { name: "Membre :", value: `${user}`, inline: true },
                         { name: "Salon :", value: `${channel}`, inline: true }
@@ -102,7 +102,7 @@ module.exports = {
             
             if (newState.selfVideo) {
                 const embed6 = new EmbedBuilder()
-                    .setTitle("🎥・Caméra Activée")
+                    .setTitle("Cam activé")
                     .addFields(
                         { name: "Membre :", value: `${user}`, inline: true },
                         { name: "Salon :", value: `${channel}`, inline: true }
@@ -115,7 +115,7 @@ module.exports = {
                 }
             } else {
                 const embed7 = new EmbedBuilder()
-                    .setTitle("🎥・Caméra Désactivée")
+                    .setTitle("Cam désactivée")
                     .addFields(
                         { name: "Membre :", value: `${user}`, inline: true },
                         { name: "Salon :", value: `${channel}`, inline: true }
